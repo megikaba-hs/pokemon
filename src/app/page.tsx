@@ -1,10 +1,11 @@
-'use client';
 import { PokemonGrid } from '@/components/grid-pokemon';
+import { getPokemonList } from '@/lib/pokemonAPI';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const pokemonList = await getPokemonList();
   return (
     <div className='mb-3 text-center lg:mb-0 lg:grid-cols-4 lg:text-left'>
-      <PokemonGrid />
+      <PokemonGrid pokemonList={pokemonList} />
     </div>
   );
 }
