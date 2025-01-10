@@ -14,6 +14,14 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
 
   console.log(pokemonList);
 
+  //filter
+  const searchPokemon = (pokemonList: any) => {
+    return pokemonList.filter((pokemon: any) =>
+      pokemon.name.toLowerCase().includes(searchText.toLowerCase()),
+    );
+  };
+
+  const filteredPokemonList = searchPokemon(pokemonList);
   return (
     <>
       <div>
@@ -34,10 +42,8 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
       </div>
 
       <div className='mb-32 grid text-center lg:mb-0 lg: grid-cols-3 lg-text-left'>
-        {pokemonList.map((pokemon: any) => {
-          return (
-            <PokemonCard name={ pokemon.name} />
-          )
+        {filteredPokemonList.map((pokemon: any) => {
+          return <PokemonCard name={pokemon.name} />;
         })}
       </div>
     </>
