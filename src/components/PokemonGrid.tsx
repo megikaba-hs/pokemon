@@ -1,6 +1,6 @@
 'use client';
 
-import { PokemonCard } from '@/components/card';
+import { PokemonCard } from '@/components/PokemonCard';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useState } from 'react';
@@ -12,9 +12,6 @@ interface PokemonGridProps {
 export function PokemonGrid({ pokemonList }: PokemonGridProps) {
   const [searchText, setSearchText] = useState('');
 
-  console.log(pokemonList);
-
-  //filter
   const searchPokemon = (pokemonList: any) => {
     return pokemonList.filter((pokemon: any) =>
       pokemon.name.toLowerCase().includes(searchText.toLowerCase()),
@@ -43,12 +40,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
 
       <div className='mb-32 grid text-center lg:mb-0 lg: grid-cols-3 lg-text-left'>
         {filteredPokemonList.map((pokemon: any) => {
-          return (
-            <PokemonCard
-              // key = {pokemon.id}
-              name={pokemon.name}
-            />
-          );
+          return <PokemonCard name={pokemon.name} />;
         })}
       </div>
     </>

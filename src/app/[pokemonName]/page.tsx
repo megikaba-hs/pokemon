@@ -1,7 +1,6 @@
 import { PokemonImage } from '@/components/PokemonImage';
 import { Progress } from '@/components/ui/progress';
 import { getPokemon } from '@/lib/pokemonAPI';
-import Image from 'next/image';
 
 export default async function PokemonPage({
   params,
@@ -16,7 +15,9 @@ export default async function PokemonPage({
 
   return (
     <>
-      <h1 className='text-4xl text-bold pt-4'>{pokemonName}</h1>
+      <h1 className='text-4xl text-bold pt-4'>
+        {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
+      </h1>
       <div
         className='m-4'
         style={{ position: 'relative', width: '300px', height: '300px' }}

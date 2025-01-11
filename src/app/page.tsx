@@ -1,4 +1,4 @@
-import { PokemonGrid } from '@/components/grid-pokemon';
+import { PokemonGrid } from '@/components/PokemonGrid';
 import { getPokemonList } from '@/lib/pokemonAPI';
 
 export default async function HomePage() {
