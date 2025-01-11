@@ -15,7 +15,7 @@ interface PaginationProps {
 
 const PokemonPagination = ({ count, page, onPageChange }: PaginationProps) => {
   return (
-    <div className='mt-4 flex justify-center'>
+    <div className='mt-6 mb-6 flex justify-center'>
       <Pagination>
         {page > 1 && (
           <PaginationPrevious onClick={() => onPageChange(page - 1)} />

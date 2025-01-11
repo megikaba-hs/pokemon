@@ -5,7 +5,7 @@ import React from 'react';
 const Header = () => {
   return (
     <header
-      className='flex items-center justify-between w-full py-2'
+      className='flex items-center justify-between w-full py-2 px-4'
       style={{
         background: 'linear-gradient(90deg, #FFCC00, #3B4CCA)',
         color: 'white',

@@ -9,7 +9,7 @@ interface PokemonGridProps {
   pokemonList: any;
 }
 
-const POKEMONS_PER_PAGE = 3;
+const POKEMONS_PER_PAGE = 9;
 
 export function PokemonGrid({ pokemonList }: PokemonGridProps) {
   const [searchText, setSearchText] = useState('');
@@ -35,7 +35,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
   return (
     <>
       <div className='flex flex-col items-center'>
-        <h3 className='text-2xl py-6 text-center'>Search your Pokèmon</h3>
+        <h3 className='text-2xl pb-6 text-center'>Search your Pokèmon</h3>
 
         <div className='grid w-full max-w-sm items-center gap-1.5'>
           <Input
@@ -51,8 +51,14 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
       </div>
 
       <div className='mb-32 grid text-center lg:mb-0 lg: grid-cols-3 lg-text-left'>
-        {filteredPokemonList.map((pokemon: any) => {
-          return <PokemonCard key={pokemon.name} name={pokemon.name} />;
+        {paginatedPokemonList.map((pokemon: any) => {
+          return (
+            <PokemonCard
+              key={pokemon.name}
+              name={pokemon.name}
+              image={pokemon.image}
+            />
+          );
         })}
       </div>
 
