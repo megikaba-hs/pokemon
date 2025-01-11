@@ -1,3 +1,4 @@
+import { Footer } from '@/components/Footer';
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import * as React from 'react';
@@ -15,6 +16,7 @@ export default function RootLayout({
         <main className='flex min-h-screen flex-col items-center'>
           <Header />
           {children}
+          <Footer/>
         </main>
         {/* </ThemeProvider> */}
       </body>

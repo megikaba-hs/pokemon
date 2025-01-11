@@ -4,14 +4,20 @@ import { useState } from 'react';
 
 import { PokemonCard } from '@/components/PokemonCard';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-
+import PokemonPagination from '@/components/PokemonPagination';
 interface PokemonGridProps {
   pokemonList: any;
 }
 
+const POKEMONS_PER_PAGE = 3;
+
 export function PokemonGrid({ pokemonList }: PokemonGridProps) {
   const [searchText, setSearchText] = useState('');
+  const [page, setPage] = useState(1);
+
+  const handleChange = (value: number) => {
+    setPage(value);
+  };
 
   const searchPokemon = (pokemonList: any) => {
     return pokemonList.filter((pokemon: any) =>
@@ -20,13 +26,18 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
   };
 
   const filteredPokemonList = searchPokemon(pokemonList);
+
+  const paginatedPokemonList = filteredPokemonList.slice(
+    (page - 1) * POKEMONS_PER_PAGE,
+    page * POKEMONS_PER_PAGE,
+  );
+
   return (
     <>
-      <div>
+      <div className='flex flex-col items-center'>
         <h3 className='text-2xl py-6 text-center'>Search your Pokèmon</h3>
 
         <div className='grid w-full max-w-sm items-center gap-1.5'>
-          <Label htmlFor='pokemonName'>Pokemon Name</Label>
           <Input
             type='text'
             value={searchText}
@@ -43,6 +54,14 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
         {filteredPokemonList.map((pokemon: any) => {
           return <PokemonCard key={pokemon.name} name={pokemon.name} />;
         })}
+      </div>
+
+      <div>
+        <PokemonPagination
+          count={Math.ceil(filteredPokemonList.length / POKEMONS_PER_PAGE)}
+          page={page}
+          onPageChange={handleChange}
+        />
       </div>
     </>
   );
