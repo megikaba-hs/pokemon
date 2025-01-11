@@ -1,9 +1,10 @@
 'use client';
 
+import { useState } from 'react';
+
 import { PokemonCard } from '@/components/PokemonCard';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useState } from 'react';
 
 interface PokemonGridProps {
   pokemonList: any;
@@ -40,7 +41,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
 
       <div className='mb-32 grid text-center lg:mb-0 lg: grid-cols-3 lg-text-left'>
         {filteredPokemonList.map((pokemon: any) => {
-          return <PokemonCard name={pokemon.name} />;
+          return <PokemonCard key={pokemon.name} name={pokemon.name} />;
         })}
       </div>
     </>

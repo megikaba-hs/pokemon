@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import Header from '@/components/Header';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import * as React from 'react';
 import './globals.css';
 
@@ -11,12 +12,8 @@ export default function RootLayout({
     <html>
       <body>
         {/* <ThemeProvider attribute='class' defaultTheme='dark'> */}
-        <main className='flex min-h-screen flex-col items-center p-24'>
-          <div className='z-10 w-full max-w-5xl items-center justify-between text-sm lg:flex'>
-            <Link href='/'>
-              <h2 className='text-2xl text-bold'>Pokémon </h2>
-            </Link>
-          </div>
+        <main className='flex min-h-screen flex-col items-center'>
+          <Header />
           {children}
         </main>
         {/* </ThemeProvider> */}
