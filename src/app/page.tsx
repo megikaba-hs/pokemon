@@ -1,7 +1,8 @@
 import React from 'react';
 import { PokemonGrid } from '@/components/PokemonGrid';
-import { getPokemonList } from '@/lib/pokemonAPI';
 import { PokemonImage } from '@/components/PokemonImage';
+import { getPokemonList } from '@/lib/pokemonAPI';
+
 
 export default async function HomePage() {
   let pokemonList;

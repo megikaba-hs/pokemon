@@ -1,7 +1,7 @@
 import React from 'react';
+import { PokemonImage } from '@/components/PokemonImage';
 import TrainersPage from '@/components/TrainersPage';
 import { getPokemonList } from '@/lib/pokemonAPI';
-import { PokemonImage } from '@/components/PokemonImage';
 
 export default async function TrainersPageWrapper() {
   let pokemonList: { name: string; image: string }[] = [];
