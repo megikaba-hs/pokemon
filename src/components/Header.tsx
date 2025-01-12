@@ -24,6 +24,8 @@ const Header = () => {
       <Link href='/'>
         <h2 className='text-2xl font-bold cursor-pointer'>Pokémon</h2>
       </Link>
+
+      <Link href='/trainers'>My Team</Link>
     </header>
   );
 };
