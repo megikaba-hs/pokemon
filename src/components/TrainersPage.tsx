@@ -38,17 +38,19 @@ export default function TrainersPage({ pokemonList }: TrainersProps) {
   );
 
   return (
-    <div className='flex flex-col px-4 sm:px-6 lg:px-8'>
+    <div className='flex flex-col items-center px-4 sm:px-6 lg:px-8'>
       <h1 className='text-2xl sm:text-3xl font-bold text-center mb-6'>
         Manage Your Pokémon Team
       </h1>
 
       <section className='mb-12 w-full'>
-        <h2 className='text-xl sm:text-2xl font-semibold mb-4'>
+        <h2 className='text-xl text-center sm:text-2xl font-semibold mb-4'>
           Your Team (Max {MAX_TEAM_SIZE} Pokémon):
         </h2>
         {team.length === 0 ? (
-          <p className='text-gray-600'>Your team is empty. Add some Pokémon!</p>
+          <p className='text-gray-600 text-center'>
+            Your team is empty. Add some Pokémon!
+          </p>
         ) : (
           <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-8'>
             {team.map((pokemon) => (

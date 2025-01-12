@@ -16,7 +16,6 @@ export function PokemonCard({ name, image, action, onAction }: CardProps) {
       <Image
         src={image}
         alt='Pokémon'
-        objectFit='cover'
         width={300}
         height={300}
       />
