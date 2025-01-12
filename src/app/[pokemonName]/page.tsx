@@ -14,40 +14,41 @@ export default async function PokemonPage({
   console.log(pokemonObject);
 
   return (
-    <>
-      <h1 className='text-4xl text-bold pt-4'>
+    <div className='flex flex-col items-center px-4 sm:px-6 lg:px-8'>
+      <h1 className='text-4xl font-bold pt-4 text-center'>
         {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
       </h1>
-      <div
-        className='m-4'
-        style={{ position: 'relative', width: '300px', height: '300px' }}
-      >
+
+      <div className='mt-6 relative w-72 h-72 sm:w-96 sm:h-96'>
         <PokemonImage
           image={pokemonObject.sprites.other['official-artwork'].front_default}
           name={pokemonName}
         />
       </div>
-      <h3>WEIGHT: {pokemonObject.wieght}</h3>
 
-      <div className='flex-col'>
+      <h3 className='text-lg font-medium mt-4'>
+        Weight: {pokemonObject.weight}
+      </h3>
+
+      <div className='mt-8 flex flex-col w-full max-w-3xl space-y-4'>
         {pokemonObject.stats.map((statObject: any) => {
           const statName = statObject.stat.name;
           const statValue = statObject.base_stat;
 
           return (
             <div
-              className='flex items-stretch'
-              style={{ width: '500px' }}
+              className='flex flex-col sm:flex-row items-center w-full space-y-2 sm:space-y-0'
               key={statName}
             >
-              <h3 className='p-3 w-2/4'>
-                {statName} : {statValue}
+              <h3 className='w-full sm:w-1/4 text-sm sm:text-base font-medium text-center sm:text-left'>
+                {statName}: {statValue}
               </h3>
-              <Progress className='w-2/4 m-auto' value={statValue} />
+
+              <Progress className='w-full sm:w-3/4' value={statValue} />
             </div>
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

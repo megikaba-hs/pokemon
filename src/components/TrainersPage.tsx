@@ -19,7 +19,7 @@ export default function TrainersPage({ pokemonList }: TrainersProps) {
     if (team.length < MAX_TEAM_SIZE) {
       setTeam((prev) => [...prev, pokemon]);
       setAvailablePokemon((prev) =>
-        prev.filter((p) => p.name !== pokemon.name)
+        prev.filter((p) => p.name !== pokemon.name),
       );
     } else {
       alert('Your team is full (6 Pokémon)!');
@@ -39,25 +39,24 @@ export default function TrainersPage({ pokemonList }: TrainersProps) {
   );
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-center mb-6">
+    <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+      <h1 className='text-2xl sm:text-3xl font-bold text-center mb-6'>
         Manage Your Pokémon Team
       </h1>
 
-
-      <section className="mb-12">
-        <h2 className="text-xl font-semibold mb-4">
+      <section className='mb-12'>
+        <h2 className='text-xl sm:text-2xl font-semibold mb-4'>
           Your Team (Max {MAX_TEAM_SIZE} Pokémon):
         </h2>
         {team.length === 0 ? (
-          <p className="text-gray-600">Your team is empty. Add some Pokémon!</p>
+          <p className='text-gray-600'>Your team is empty. Add some Pokémon!</p>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
             {team.map((pokemon) => (
-              <div key={pokemon.name} className="text-center">
+              <div key={pokemon.name} className='text-center'>
                 <PokemonCard name={pokemon.name} image={pokemon.image} />
                 <button
-                  className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  className='mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition'
                   onClick={() => handleRemoveFromTeam(pokemon.name)}
                 >
                   Remove
@@ -68,12 +67,11 @@ export default function TrainersPage({ pokemonList }: TrainersProps) {
         )}
       </section>
 
-
       <section>
-        <h2 className="text-xl font-semibold mb-4">
+        <h2 className='text-xl sm:text-2xl font-semibold mb-4'>
           Add Pokémon to Your Team:
         </h2>
-          <div className='grid w-full max-w-sm items-center gap-1.5'>
+        <div className='flex justify-center mb-6'>
           <Input
             type='text'
             value={searchText}
@@ -81,14 +79,15 @@ export default function TrainersPage({ pokemonList }: TrainersProps) {
             autoComplete='off'
             placeholder='Search Pokémon...'
             onChange={(e) => setSearchText(e.target.value)}
+            className='w-full max-w-sm sm:max-w-md'
           />
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4'>
           {filteredPokemonList.map((pokemon) => (
-            <div key={pokemon.name} className="text-center">
+            <div key={pokemon.name} className='text-center'>
               <PokemonCard name={pokemon.name} image={pokemon.image} />
               <button
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                className='mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition'
                 onClick={() => handleAddToTeam(pokemon)}
               >
                 Add to Team

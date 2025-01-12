@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-
 import { PokemonCard } from '@/components/PokemonCard';
 import { Input } from '@/components/ui/input';
 import PokemonPagination from '@/components/PokemonPagination';
+
 interface PokemonGridProps {
   pokemonList: any;
 }
@@ -33,42 +33,42 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
   );
 
   return (
-    <>
-      <div className='flex flex-col items-center'>
-        <h3 className='text-2xl pb-6 text-center'>Search your Pokèmon</h3>
+    <div className='flex flex-col items-center px-4 sm:px-6 lg:px-8'>
+      <h3 className='text-2xl font-semibold pb-4 text-center'>
+        Search your Pokémon
+      </h3>
+      <div className='w-full max-w-md'>
+        <Input
+          type='text'
+          value={searchText}
+          id='pokemonName'
+          autoComplete='off'
+          placeholder='Search Pokémon...'
+          onChange={(e) => setSearchText(e.target.value)}
+          className='w-full'
+        />
+      </div>
 
-        <div className='grid w-full max-w-sm items-center gap-1.5'>
-          <Input
-            type='text'
-            value={searchText}
-            id='pokemonName'
-            autoComplete='off'
-            placeholder='Search Pokémon...'
-            onChange={(e) => setSearchText(e.target.value)}
+      <h3 className='text-3xl font-bold pt-8 pb-6 text-center'>
+        Pokémon Collection
+      </h3>
+      <div className='grid gap-6 mb-12 sm:grid-cols-2 lg:grid-cols-3'>
+        {paginatedPokemonList.map((pokemon: any) => (
+          <PokemonCard
+            key={pokemon.name}
+            name={pokemon.name}
+            image={pokemon.image}
           />
-        </div>
-        <h3 className='text-3xl pt-12 pb-6 text-center'>Pokemon Collection</h3>
+        ))}
       </div>
 
-      <div className='mb-32 grid text-center lg:mb-0 lg: grid-cols-3 lg-text-left'>
-        {paginatedPokemonList.map((pokemon: any) => {
-          return (
-            <PokemonCard
-              key={pokemon.name}
-              name={pokemon.name}
-              image={pokemon.image}
-            />
-          );
-        })}
-      </div>
-
-      <div>
+      <div className='flex justify-center w-full'>
         <PokemonPagination
           count={Math.ceil(filteredPokemonList.length / POKEMONS_PER_PAGE)}
           page={page}
           onPageChange={handleChange}
         />
       </div>
-    </>
+    </div>
   );
 }
