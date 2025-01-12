@@ -9,8 +9,8 @@ interface PokemonPageProps {
   };
 }
 
-export default async function PokemonPage({ params }: PokemonPageProps) {
-  const { pokemonName } = params;
+export default async function PokemonPage(props: PokemonPageProps) {
+  const { pokemonName } = await props.params;
 
   let pokemonObject;
   let error = null;
@@ -24,9 +24,7 @@ export default async function PokemonPage({ params }: PokemonPageProps) {
   if (error) {
     return (
       <div className='flex flex-col items-center px-4 sm:px-6 lg:px-8'>
-        <h2 className='mt-28 text-xl sm:text-2xl font-semibold'>
-          Oh no! The Poké Ball failed. Try again!
-        </h2>
+        <h2 className='mt-28 text-xl sm:text-2xl font-semibold'>{error}</h2>
 
         <div className='mt-6 relative w-72 h-72 sm:w-96 sm:h-96'>
           <PokemonImage image='/images/pokeball.png' name={error} />
