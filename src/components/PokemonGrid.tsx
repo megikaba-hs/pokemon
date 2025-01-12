@@ -7,7 +7,6 @@ import { Input } from '@/components/ui/input';
 interface PokemonGridProps {
   pokemonList: any;
 }
-
 // eslint-disable-next-line no-magic-numbers
 const POKEMONS_PER_PAGE = 9;
 
