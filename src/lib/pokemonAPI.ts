@@ -3,6 +3,15 @@ const POKEMON_API = 'https://pokeapi.co/api/v2/';
 interface Pokemon {
   name: string;
 }
+
+// Define `getPokemon` first
+export async function getPokemon(name: string) {
+  const response = await fetch(POKEMON_API + 'pokemon/' + name);
+  const data = await response.json();
+  return data;
+}
+
+// Define `getPokemonList` after `getPokemon`
 export async function getPokemonList(): Promise<
   { name: string; image: string }[]
 > {
@@ -18,10 +27,4 @@ export async function getPokemonList(): Promise<
     }),
   );
   return pokemonDetails;
-}
-
-export async function getPokemon(name: string) {
-  const response = await fetch(POKEMON_API + 'pokemon/' + name);
-  const data = await response.json();
-  return data;
 }

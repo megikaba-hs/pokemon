@@ -1,6 +1,5 @@
 'use client';
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { PokemonCard } from '@/components/PokemonCard';
 import { Input } from '@/components/ui/input';
 
@@ -39,59 +38,57 @@ export default function TrainersPage({ pokemonList }: TrainersProps) {
   );
 
   return (
-    <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+    <div className='flex flex-col px-4 sm:px-6 lg:px-8'>
       <h1 className='text-2xl sm:text-3xl font-bold text-center mb-6'>
         Manage Your Pokémon Team
       </h1>
 
-      <section className='mb-12'>
+      <section className='mb-12 w-full'>
         <h2 className='text-xl sm:text-2xl font-semibold mb-4'>
           Your Team (Max {MAX_TEAM_SIZE} Pokémon):
         </h2>
         {team.length === 0 ? (
           <p className='text-gray-600'>Your team is empty. Add some Pokémon!</p>
         ) : (
-          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+          <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-8'>
             {team.map((pokemon) => (
-              <div key={pokemon.name} className='text-center'>
-                <PokemonCard name={pokemon.name} image={pokemon.image} />
-                <button
-                  className='mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition'
-                  onClick={() => handleRemoveFromTeam(pokemon.name)}
-                >
-                  Remove
-                </button>
+              <div key={pokemon.name}>
+                <PokemonCard
+                  name={pokemon.name}
+                  image={pokemon.image}
+                  action='remove'
+                  onAction={() => handleRemoveFromTeam(pokemon.name)}
+                />
               </div>
             ))}
           </div>
         )}
       </section>
 
-      <section>
+      <section className='w-full'>
         <h2 className='text-xl sm:text-2xl font-semibold mb-4'>
           Add Pokémon to Your Team:
         </h2>
-        <div className='flex justify-center mb-6'>
+        <div className='w-full max-w-md mb-6'>
           <Input
             type='text'
             value={searchText}
             id='pokemonName'
             autoComplete='off'
-            placeholder='Search Pokémon...'
+            placeholder='Pikatchu, Venusaur, etc...'
             onChange={(e) => setSearchText(e.target.value)}
-            className='w-full max-w-sm sm:max-w-md'
+            className='w-full'
           />
         </div>
-        <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4'>
+        <div className='grid gap-6 mb-12 sm:grid-cols-2 lg:grid-cols-3'>
           {filteredPokemonList.map((pokemon) => (
-            <div key={pokemon.name} className='text-center'>
-              <PokemonCard name={pokemon.name} image={pokemon.image} />
-              <button
-                className='mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition'
-                onClick={() => handleAddToTeam(pokemon)}
-              >
-                Add to Team
-              </button>
+            <div key={pokemon.name}>
+              <PokemonCard
+                name={pokemon.name}
+                image={pokemon.image}
+                action='add'
+                onAction={() => handleAddToTeam(pokemon)}
+              />
             </div>
           ))}
         </div>

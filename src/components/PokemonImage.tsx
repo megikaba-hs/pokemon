@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import React from 'react';
 
 export function PokemonImage({ image, name }: { image: string; name: string }) {
   return (

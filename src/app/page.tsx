@@ -1,4 +1,4 @@
-import { Footer } from '@/components/Footer';
+import React from 'react';
 import { PokemonGrid } from '@/components/PokemonGrid';
 import { getPokemonList } from '@/lib/pokemonAPI';
 

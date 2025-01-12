@@ -1,3 +1,4 @@
+import React from 'react';
 import TrainersPage from '@/components/TrainersPage';
 import { getPokemonList } from '@/lib/pokemonAPI';
 

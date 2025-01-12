@@ -1,17 +1,18 @@
+import React from 'react';
 import { PokemonImage } from '@/components/PokemonImage';
 import { Progress } from '@/components/ui/progress';
 import { getPokemon } from '@/lib/pokemonAPI';
 
-export default async function PokemonPage({
-  params,
-}: {
-  params: { pokemonName: string };
-}) {
+interface PokemonPageProps {
+  params: {
+    pokemonName: string;
+  };
+}
+
+export default async function PokemonPage({ params }: PokemonPageProps) {
   const { pokemonName } = params;
 
   const pokemonObject = await getPokemon(pokemonName);
-
-  console.log(pokemonObject);
 
   return (
     <div className='flex flex-col items-center px-4 sm:px-6 lg:px-8'>
@@ -43,7 +44,6 @@ export default async function PokemonPage({
               <h3 className='w-full sm:w-1/4 text-sm sm:text-base font-medium text-center sm:text-left'>
                 {statName}: {statValue}
               </h3>
-
               <Progress className='w-full sm:w-3/4' value={statValue} />
             </div>
           );

@@ -1,14 +1,14 @@
 'use client';
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { PokemonCard } from '@/components/PokemonCard';
-import { Input } from '@/components/ui/input';
 import PokemonPagination from '@/components/PokemonPagination';
+import { Input } from '@/components/ui/input';
 
 interface PokemonGridProps {
   pokemonList: any;
 }
 
+// eslint-disable-next-line no-magic-numbers
 const POKEMONS_PER_PAGE = 9;
 
 export function PokemonGrid({ pokemonList }: PokemonGridProps) {
@@ -43,7 +43,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
           value={searchText}
           id='pokemonName'
           autoComplete='off'
-          placeholder='Search Pokémon...'
+          placeholder='Pikatchu, Venusaur, etc...'
           onChange={(e) => setSearchText(e.target.value)}
           className='w-full'
         />
