@@ -3,9 +3,13 @@ import { PokemonGrid } from '@/components/PokemonGrid';
 import { PokemonImage } from '@/components/PokemonImage';
 import { getPokemonList } from '@/lib/pokemonAPI';
 
+interface Pokemon {
+  name: string;
+  image: string;
+}
 
 export default async function HomePage() {
-  let pokemonList;
+  let pokemonList: Pokemon[] = [];
   let error = null;
 
   try {

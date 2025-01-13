@@ -16,16 +16,19 @@ const Header = () => {
         <Image
           src='/images/pokemon.png'
           alt='Pokémon'
-          objectFit='cover'
           width={150}
           height={60}
         />
       </div>
       <Link href='/'>
-        <h2 className='text-2xl font-bold cursor-pointer'>Pokémon</h2>
+        <h2 className='text-xl sm:text-2xl font-bold cursor-pointer'>
+          Pokémon
+        </h2>
       </Link>
 
-      <Link href='/trainers'>My Team</Link>
+      <Link href='/trainers'>
+        <p className='text-sm sm:text-base cursor-pointer'>My Team</p>
+      </Link>
     </header>
   );
 };

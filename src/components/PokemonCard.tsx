@@ -13,12 +13,7 @@ interface CardProps {
 export function PokemonCard({ name, image, action, onAction }: CardProps) {
   return (
     <div className='group rounded-lg border border-transparent px-5 py-4 m-3 transition-colors hover:bg-gray-200 bg-gray-100 hover: dark'>
-      <Image
-        src={image}
-        alt='Pokémon'
-        width={300}
-        height={300}
-      />
+      <Image src={image} alt='Pokémon' width={300} height={300} />
       <h2 className='text-2xl font-semibold text-center'>
         {name.charAt(0).toUpperCase() + name.slice(1)}
       </h2>

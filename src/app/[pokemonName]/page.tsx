@@ -3,6 +3,13 @@ import { PokemonImage } from '@/components/PokemonImage';
 import { Progress } from '@/components/ui/progress';
 import { getPokemon } from '@/lib/pokemonAPI';
 
+interface Stat {
+  stat: {
+    name: string;
+  };
+  base_stat: number;
+}
+
 interface PokemonPageProps {
   params: {
     pokemonName: string;
@@ -32,6 +39,7 @@ export default async function PokemonPage(props: PokemonPageProps) {
       </div>
     );
   }
+
   return (
     <div className='flex flex-col items-center px-4 sm:px-6 lg:px-8'>
       <h1 className='text-4xl font-bold pt-4 text-center'>
@@ -50,7 +58,7 @@ export default async function PokemonPage(props: PokemonPageProps) {
       </h3>
 
       <div className='mt-8 flex flex-col w-full max-w-3xl space-y-4'>
-        {pokemonObject.stats.map((statObject: any) => {
+        {pokemonObject.stats.map((statObject: Stat) => {
           const statName = statObject.stat.name;
           const statValue = statObject.base_stat;
 

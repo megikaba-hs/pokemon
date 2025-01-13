@@ -20,7 +20,7 @@ describe('PokemonGrid', () => {
     render(<PokemonGrid pokemonList={mockPokemonList} />);
 
     const searchInput = screen.getByPlaceholderText(
-      'Pikatchu, Venusaur, etc...',
+      'Pikachu, Venusaur, etc...',
     );
 
     fireEvent.change(searchInput, { target: { value: 'Pikachu' } });
@@ -29,22 +29,9 @@ describe('PokemonGrid', () => {
     expect(screen.queryByText('Bulbasaur')).not.toBeInTheDocument();
   });
 
-  // it('paginates the Pokémon list correctly', () => {
-  //   render(<PokemonGrid pokemonList={mockPokemonList} />);
-
-  //   const searchInput = screen.getByPlaceholderText('Pikatchu, Venusaur, etc...');
-
-  //   expect(screen.getAllByRole('img')).toHaveLength(9);
-
-  //   const paginationNextButton = screen.getByText('Next');
-  //   fireEvent.click(paginationNextButton);
-  //   expect(screen.getAllByRole('img')).toHaveLength(2);
-  // });
-
   it('renders the Pokémon list correctly', () => {
     render(<PokemonGrid pokemonList={mockPokemonList} />);
 
-    // Ensure that Pokémon names are displayed
     expect(screen.getByText('Pikachu')).toBeInTheDocument();
     expect(screen.getByText('Bulbasaur')).toBeInTheDocument();
     expect(screen.getByText('Charmander')).toBeInTheDocument();

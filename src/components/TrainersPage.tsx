@@ -3,18 +3,23 @@ import React, { useState } from 'react';
 import { PokemonCard } from '@/components/PokemonCard';
 import { Input } from '@/components/ui/input';
 
-interface TrainersProps {
-  pokemonList: any[];
+interface Pokemon {
+  name: string;
+  image: string;
 }
-
 const MAX_TEAM_SIZE = 6;
 
+interface TrainersProps {
+  pokemonList: Pokemon[];
+}
+
 export default function TrainersPage({ pokemonList }: TrainersProps) {
-  const [availablePokemon, setAvailablePokemon] = useState(pokemonList);
-  const [team, setTeam] = useState<any[]>([]);
+  const [availablePokemon, setAvailablePokemon] =
+    useState<Pokemon[]>(pokemonList);
+  const [team, setTeam] = useState<Pokemon[]>([]);
   const [searchText, setSearchText] = useState('');
 
-  const handleAddToTeam = (pokemon: any) => {
+  const handleAddToTeam = (pokemon: Pokemon) => {
     if (team.length < MAX_TEAM_SIZE) {
       setTeam((prev) => [...prev, pokemon]);
       setAvailablePokemon((prev) =>
@@ -77,7 +82,7 @@ export default function TrainersPage({ pokemonList }: TrainersProps) {
             value={searchText}
             id='pokemonName'
             autoComplete='off'
-            placeholder='Pikatchu, Venusaur, etc...'
+            placeholder='Pikachu, Venusaur, etc...'
             onChange={(e) => setSearchText(e.target.value)}
             className='w-full'
           />

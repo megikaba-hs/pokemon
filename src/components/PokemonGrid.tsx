@@ -4,10 +4,15 @@ import { PokemonCard } from '@/components/PokemonCard';
 import PokemonPagination from '@/components/PokemonPagination';
 import { Input } from '@/components/ui/input';
 
-interface PokemonGridProps {
-  pokemonList: any;
+interface Pokemon {
+  name: string;
+  image: string;
 }
-// eslint-disable-next-line no-magic-numbers
+
+interface PokemonGridProps {
+  pokemonList: Pokemon[];
+}
+
 const POKEMONS_PER_PAGE = 9;
 
 export function PokemonGrid({ pokemonList }: PokemonGridProps) {
@@ -18,8 +23,8 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
     setPage(value);
   };
 
-  const searchPokemon = (pokemonList: any) => {
-    return pokemonList.filter((pokemon: any) =>
+  const searchPokemon = (pokemonList: Pokemon[]) => {
+    return pokemonList.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(searchText.toLowerCase()),
     );
   };
@@ -33,7 +38,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
 
   return (
     <div className='flex flex-col items-center px-4 sm:px-6 lg:px-8'>
-      <h3 className='text-2xl font-semibold pb-4 text-center'>
+      <h3 className='text-xl sm:text-2xl font-semibold pb-4 text-center'>
         Search your Pokémon
       </h3>
       <div className='w-full max-w-md'>
@@ -42,17 +47,17 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
           value={searchText}
           id='pokemonName'
           autoComplete='off'
-          placeholder='Pikatchu, Venusaur, etc...'
+          placeholder='Pikachu, Venusaur, etc...'
           onChange={(e) => setSearchText(e.target.value)}
           className='w-full'
         />
       </div>
 
-      <h3 className='text-3xl font-bold pt-8 pb-6 text-center'>
+      <h3 className='text-2xl sm:text-3xl font-bold pt-8 pb-6 text-center'>
         Pokémon Collection
       </h3>
       <div className='grid gap-6 mb-12 sm:grid-cols-2 lg:grid-cols-3'>
-        {paginatedPokemonList.map((pokemon: any) => (
+        {paginatedPokemonList.map((pokemon) => (
           <PokemonCard
             key={pokemon.name}
             name={pokemon.name}
