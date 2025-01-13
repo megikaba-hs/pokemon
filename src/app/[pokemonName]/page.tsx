@@ -10,14 +10,12 @@ interface Stat {
   base_stat: number;
 }
 
-interface PokemonPageProps {
-  params: {
-    pokemonName: string;
-  };
-}
-
-export default async function PokemonPage(props: PokemonPageProps) {
-  const { pokemonName } = await props.params;
+export default async function PokemonPage({
+  params,
+}: {
+  params: { pokemonName: string };
+}) {
+  const { pokemonName } = params;
 
   let pokemonObject;
   let error = null;
